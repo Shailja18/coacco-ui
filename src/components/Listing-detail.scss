@@ -1,0 +1,201 @@
+.listcontainer
+{
+  display:center;
+  background-color: whitesmoke;
+}
+
+.section1
+{
+  display:block;
+  box-sizing: border-box;
+  width: 250px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #d8d8d8;
+}
+
+.section2
+{
+  display:block;
+  box-sizing: border-box    ;
+  width: calc(100% - 490px);
+  float: left;
+  padding: 0 20px;
+  line-height: 22px;
+  position: relative;
+}
+.container{
+  
+  display:block;
+   padding:5px 15px 5px 15px;
+      width:93%;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+.pgdetail-header
+{
+  background-color: white;
+  box-sizing: border-box;
+  
+  width: 100%;
+    height: auto;
+    padding: 30px 0 15px;
+    display: table;
+}
+.inner-container
+{
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    display:block;
+}
+
+h6
+{
+  color:grey;
+}
+
+.pgdetail-header
+{
+   box-sizing:border-box;
+}
+#pgdetail-top
+{
+  max-height:70px;
+}
+
+.pgdetails_middle
+{
+  
+  border-top: 1px solid #f5f5f5;
+  max-height:30px;
+  position: -webkit-sticky;
+  position:sticky;
+  top:0px;
+  z-index:101;
+}
+
+
+.carousel .carousel-item>img {
+  width: 60%; //there you set the width
+  margin-left:18%;
+  //margin-left: -10%; //this is the centering of carousel (in original, it is a bit off to the right)
+  height:95%;
+}
+.carousel 
+{
+  display:block;
+    
+  //width:700px;
+ // height:500px;
+}
+
+.tabs 
+.tab a{
+  color: black;
+}
+
+.middlecontainer
+{
+  justify-content:center;
+  margin:50px 100px 50px 100px;
+
+}
+
+.detail-info-group
+{
+  width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+.detail-info-grid
+{
+  flex: 1 0 21%;
+    border-top: 1px solid #e8e8e8;
+    padding: 16px 0 16px 20px;
+}
+
+.contact-view
+{
+  color: #fff;
+    
+}
+
+.detail-section-title
+{
+  display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #303030;
+    font-weight: 600;
+}
+
+.occupancy-detail
+{
+width: 100%;
+height: auto;
+padding-bottom: 24px;
+}
+.occupancy-list-item
+{
+  width: 100%;
+    height: auto;
+    padding: 6px 0 ;
+    display: table;
+}
+.amenties-list
+{
+ // width:100%;
+ // width: calc(100% - 356px);
+ //  padding-right: 16px;
+   width: 100%;
+height: auto;
+padding-bottom: 24px;
+display:flex;  
+list-style:none;
+      
+}
+.amenties-list-item
+{
+  width: 100%;
+    height: auto;
+    padding: 6px 0 ;
+    display: table;
+ // width:50%;
+  box-sizing: border-box;
+  padding: 20px 25px 20px 25px;
+  //  text-align: center;
+  //  display: inline;
+  //  padding: 7px;
+
+}
+.smalldiv
+{
+  width: 100%;
+  //height: auto;
+  padding-top: 6px;
+  font-size: 14px;
+  box-sizing: border;
+
+}
+.kitchen-list 
+{
+  
+  display:flex;  
+  list-style:none;
+
+}
+.kitchen-list-item
+{
+  width: 100%;
+    height: auto;
+    
+ // width:50%;
+  box-sizing: border-box;
+  padding: 20px 25px 20px 25px;
+}
