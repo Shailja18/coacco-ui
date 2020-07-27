@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // using sass instead of css (always use extn .scss) (sass docs - https://sass-lang.com/documentation/syntax)
 import './App.scss';
 
-import Home from './components/Home'
-import ListingDetail from './components/Listing-detail'
-import ListingHeader from './components/ListingHeader';
 
+import ListingDetail from './components/Listing-detail'
+import Header from './components/Header';
+import HeaderTop from './components/HeaderTop';
 function App() {
   return (
     /*
@@ -15,9 +15,12 @@ function App() {
     <Router>
       <Switch>
 
-        <Route path="/">
-          
-          <ListingDetail/>
+        <Route exact path="/">
+        <Header/>
+        </Route>
+        <Route exact path="/list">
+        <HeaderTop/> 
+        <ListingDetail/>
           
         </Route>
        

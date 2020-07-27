@@ -1,21 +1,42 @@
 import React,{Component} from 'react';
 import './Listing-detail.scss';
 import M from 'materialize-css'
+import Popup from './Popup';
+import TransportPopup from './TransportPopup';
 //C:\Users\Swift3\Documents\React Projects\co-acco-ui-dev\src\Images\ApartmentOne.jpg
 
 
 export default class ListingDetail extends Component
 {
 
+  constructor(props)
+  {
+    super(props);
+    this.state={ showpopup:false};
+    this.state={ showtransportpopup:false};
+  }
+  toggleTransportPopup()
+  {
+    this.setState({
+      showtransportpopup:!this.state.showtransportpopup
+    });
+  }
+  togglePopup() {  
+    this.setState({  
+         showPopup: !this.state.showPopup  
+    });  
+  }
   componentDidMount()
   {
     document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.carousel');
-      var options= { fullWidth:true,    indicators:true};
-      var instances = M.Carousel.init(elems,options);
+      var elems = document.querySelectorAll('.slider');
+      var options= {    indicators:true ,height:400 ,interval:2000};
+      var instances = M.Slider.init(elems,options);
     });
-       
-  
+    var el=document.querySelectorAll('tabs');
+    var options={duration:400 };
+    var instance = M.Tabs.init(el, options);
+    
   }
    render(){
     return  (
@@ -27,11 +48,15 @@ export default class ListingDetail extends Component
               <h5>Rs 8500 onwards</h5>
               </div>
               <div  className="section2">
-                
+              <div className="type">For Girls</div>
                   <h5>Home Stay Pg</h5>
                   <h6>Occupancy Type: Double </h6>
-                  
+              
               </div>
+              <div className="contact-view ">
+              <a className="waves-effect red lighten-2  btn">Contact Owner</a>
+              <div id="map"><img src="images/location.png"/><h6>View on Map</h6></div>
+             </div>
 
               </div>
               
@@ -39,12 +64,13 @@ export default class ListingDetail extends Component
              <div className="pgdetails_middle">
               
                <ul className="tabs ">
-               <li className="tab"><a  class="active" href="#test1">Property Details</a></li>
+               <li className="tab "><a   href="#test1">Property Details</a></li>
                <li className="tab"><a  href="#test2">Occupancy Options</a></li>
                <li className="tab"><a href="#test3"> Amenities</a></li>
                <li className="tab"><a href="#test4">Food and kitchen</a></li>
                <li className="tab"><a  href="#test5">Other Charges</a></li>
               <li className="tab"><a  href="#test6">House Rules</a></li>
+              <li className="tab"><a  href="#test6">Nearby location</a></li>
               </ul>
              </div> 
 
@@ -52,15 +78,27 @@ export default class ListingDetail extends Component
              
           
           
-          <div className="container carousel-slider" id="test1">
+          <div className="container" id="test1">
           
-           <div className="carousel carousel-slider">            
-           <a className="carousel-item" href="#one!"><img src="images/ApartmentOne.jpg"/></a>
-           <a className="carousel-item" href="#two!"><img src="images/Apartment2.jpg"/></a>
-           <a className="carousel-item" href="#three!"><img src="images/Apartment3.jpg"/></a>
-           <a className="carousel-item" href="#four!"><img src="images/Apartment9.jpg"/></a>
-           <a className="carousel-item" href="#five!"><img src="images/Apartment10.jpg"/></a>
-           </div>   
+          
+  <div className="slider">
+  <ul className="slides ">
+    <li className="sliderlist">
+      <img src="images/ApartmentOne.jpg"/> 
+      <div className="caption center-align">
+      </div>
+    </li>
+    <li>
+      <img src="images/Apartment2.jpg"/> 
+    </li>
+    <li>
+      <img src="images/Apartment3.jpg"/> 
+    </li>
+    <li>
+      <img src="images/Apartment9.jpg"/> 
+    </li>
+  </ul>
+</div>  
            <div>
              <ul className="detail-info-group">
              <li className="detail-info-grid">
@@ -88,6 +126,7 @@ export default class ListingDetail extends Component
 
        
        <div id="test2" className="container">
+       
        <div className="detail-section-title">
         Occupancy Options</div>
         <div class="row">
@@ -123,10 +162,8 @@ export default class ListingDetail extends Component
         <ul className="amenties-list">
           <li className="amenties-list-item">
           <img src="images/wifi.png"></img>
-             <h6>Wifi</h6>
+          <h6>Wifi</h6>
           </li>
-            
-          
           <li className="amenties-list-item"> 
           <img src="images/Powerbackup.png"></img>
           <h6> Power Backup</h6>
@@ -140,9 +177,29 @@ export default class ListingDetail extends Component
           <h6>No Drinks</h6>
           </li>
           <li className="amenties-list-item">
-          <img src="images/kitchen.png"></img>
-          <h6>Fridge</h6>
+          <img src="images/TV.png"></img>
+          <h6>TV</h6>
           </li>
+          <li className="amenties-list-item">
+          <img src="images/WashingMachine.png"></img>
+          <h6>Washing Machine</h6>
+          </li>
+          <li className="amenties-list-item">
+          <img src="images/fingerprintaccess.png"></img>
+          <h6>FingerPrint Access</h6>
+          </li>
+          
+          <li className="amenties-list-item" onClick={this.toggleTransportPopup.bind(this)}>
+          <img src="images/Transport.png"></img>
+          <h6>Transport Available</h6>
+          </li>
+           {this.state.showtransportpopup ?  
+            <TransportPopup  
+                      text='Click "Close Button" to hide popup'  
+                      closePopup={this.toggleTransportPopup.bind(this)}  
+            />  
+            : null  
+            } 
         </ul>
        
        </div>
@@ -151,15 +208,23 @@ export default class ListingDetail extends Component
        <div className="detail-section-title">
         Food And Kitchen
         </div>
-        <ul className="kitchen-list">  
-          <li className="kitchen-list-item">
+        <ul className="amenties-list">  
+          <li className="amenties-list-item" onClick={this.togglePopup.bind(this)}>
           <img src="images/Food.png"></img>
           <h6>Food Availability</h6>
+          
           </li>
-          <li className="kitchen-list-item">
-          <img src="images/Restaurant.png"></img>
-            <h6>Veg Only</h6> 
-          </li>
+          {this.state.showPopup ?  
+            <Popup  
+                      text='Click "Close Button" to hide popup'  
+                      closePopup={this.togglePopup.bind(this)}  
+            />  
+            : null  
+            } 
+            <li className="amenties-list-item">
+            <img src="images/kitchen.png"></img>
+            <h6>Fridge</h6>
+            </li>
         </ul>
         
 
@@ -169,12 +234,12 @@ export default class ListingDetail extends Component
        <div className="detail-section-title">
         Other Charges
         </div>
-        <ul className="kitchen-list">  
-          <li className="kitchen-list-item">
+        <ul className="amenties-list">  
+          <li className="amenties-list-item">
           <img src="images/Deposit.png"></img>
           <h6>Deposit</h6>
           </li>
-          <li className="kitchen-list-item">
+          <li className="amenties-list-item">
           <img src="images/Maintenance.png"></img>
           <h6>Maintanence</h6>
           </li>
@@ -186,18 +251,35 @@ export default class ListingDetail extends Component
        <div className="detail-section-title">
         House Rules
         </div>
-        <ul className="kitchen-list">  
-          <li className="kitchen-list-item">
+        <ul className="amenties-list">  
+          <li className="amenties-list-item">
           <img src="images/Music.png"></img>
           <h6>Loud Music-No</h6>
           </li>
-          <li className="kitchen-list-item">
+          <li className="amenties-list-item">
           <img src="images/Visitors.png"></img>
           <h6>Visitors Allowed-Yes</h6>
           </li>
           </ul>
        </div>
        
+       
+       <div  id="test7" className="container">
+       <div className="detail-section-title">
+        Nearby Locations
+       </div>
+       <ul className="amenties-list">
+       <li className="amenties-list-item">
+
+       <h6 className="nearby-item">Koramangala Indoor stadium</h6>
+       <h6>1.3 km away </h6>
+       </li>
+       <li className="amenties-list-item">
+       <h6 className="nearby-item">IT Park </h6>
+       <h6>3 km away </h6>
+       </li>
+       </ul>
+       </div>
        </div>
     )
    }
